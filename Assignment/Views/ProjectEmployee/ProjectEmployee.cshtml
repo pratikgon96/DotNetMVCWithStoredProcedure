@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Assignment.Models.ProjectEmployee>
+
+@{
+    ViewBag.Title = "ProjectEmployee";
+}
+
+<h2>ProjectEmployee</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddProjectEmployee",null, new { @class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            Details
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProjectId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeId)
+    </td>
+    <td>
+        @Html.ActionLink("EmployeeDetails", "GetEmployeeById", "Employee", new { id = item.EmployeeId }, null) ||
+        @Html.ActionLink("ProjectDetails", "GetProjectById", "Project", new { id = item.ProjectId }, null)
+    </td>
+</tr>
+}
+
+</table>
